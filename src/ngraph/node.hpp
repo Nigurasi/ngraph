@@ -83,6 +83,7 @@ namespace ngraph
 
         virtual void generate_adjoints(autodiff::Adjoints& adjoints, const NodeVector& deltas) {}
     public:
+        virtual bool validate() { return true; }
         /// The class name, must not contain spaces
         std::string description() const { return m_node_type; }
         const std::string& get_friendly_name() const;
