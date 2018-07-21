@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::AddExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return AddExec(node);
+    }
+
     AddExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Add*>(node)}
     {

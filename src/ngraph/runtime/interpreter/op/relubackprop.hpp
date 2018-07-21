@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::ReluBackpropExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return ReluBackpropExec(node);
+    }
+
     ReluBackpropExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::ReluBackprop*>(node)}
     {

@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::SumExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return SumExec(node);
+    }
+
     SumExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Sum*>(node)}
     {

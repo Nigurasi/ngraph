@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::CAMEL_CASE_NAMEExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return CAMEL_CASE_NAMEExec(node);
+    }
+
     CAMEL_CASE_NAMEExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::CAMEL_CASE_NAME*>(node)}
     {

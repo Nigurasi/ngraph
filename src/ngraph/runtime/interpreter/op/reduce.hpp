@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::ReduceExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return ReduceExec(node);
+    }
+
     ReduceExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Reduce*>(node)}
     {

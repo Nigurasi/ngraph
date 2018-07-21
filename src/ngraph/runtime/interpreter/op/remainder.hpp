@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::RemainderExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return RemainderExec(node);
+    }
+
     RemainderExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Remainder*>(node)}
     {

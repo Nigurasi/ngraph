@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::ConvertExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return ConvertExec(node);
+    }
+
     ConvertExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Convert*>(node)}
     {

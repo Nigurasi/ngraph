@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::NegativeExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return NegativeExec(node);
+    }
+
     NegativeExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Negative*>(node)}
     {

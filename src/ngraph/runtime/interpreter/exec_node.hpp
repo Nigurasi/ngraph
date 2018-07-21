@@ -16,6 +16,8 @@
 
 #pragma once
 
+#include "ngraph/node.hpp"
+
 namespace ngraph
 {
     namespace runtime
@@ -29,4 +31,10 @@ namespace ngraph
 
 class ngraph::runtime::interpreter::ExecNode
 {
+public:
+    static ExecNode create_exec(const Node* node);
+
+private:
+    using create_t = std::function<ExecNode(const Node*)>;
+    static std::unordered_map<std::type_index, create_t> s_list;
 };

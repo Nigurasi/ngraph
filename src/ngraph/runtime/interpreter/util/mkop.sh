@@ -39,7 +39,7 @@ emit LessEq less_eq
 emit Log log
 emit Max max
 emit Maximum maximum
-emit MaxPool maxpool
+emit MaxPool max_pool
 emit Min min
 emit Minimum minimum
 emit Multiply multiply
@@ -75,4 +75,4 @@ emit StopGradient stop_gradient
 emit Subtract subtract
 emit Sum sum
 emit Tan tan
-emit Tanh                                               tanh
+emit Tanh tanh

@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::FunctionCallExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return FunctionCallExec(node);
+    }
+
     FunctionCallExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::FunctionCall*>(node)}
     {

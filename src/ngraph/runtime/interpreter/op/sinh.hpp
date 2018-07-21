@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::SinhExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return SinhExec(node);
+    }
+
     SinhExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Sinh*>(node)}
     {

@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::MinExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return MinExec(node);
+    }
+
     MinExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Min*>(node)}
     {

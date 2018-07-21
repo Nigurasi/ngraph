@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::CeilingExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return CeilingExec(node);
+    }
+
     CeilingExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Ceiling*>(node)}
     {

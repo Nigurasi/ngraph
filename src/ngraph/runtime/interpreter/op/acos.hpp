@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::AcosExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return AcosExec(node);
+    }
+
     AcosExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Acos*>(node)}
     {

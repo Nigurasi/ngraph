@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::CoshExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return CoshExec(node);
+    }
+
     CoshExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Cosh*>(node)}
     {

@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::AbsExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return AbsExec(node);
+    }
+
     AbsExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Abs*>(node)}
     {

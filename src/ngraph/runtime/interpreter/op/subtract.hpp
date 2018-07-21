@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::SubtractExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return SubtractExec(node);
+    }
+
     SubtractExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Subtract*>(node)}
     {

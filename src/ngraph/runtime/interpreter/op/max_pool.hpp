@@ -19,7 +19,7 @@
 #include <memory>
 #include <vector>
 
-#include "ngraph/op/asin.hpp"
+#include "ngraph/op/max_pool.hpp"
 #include "ngraph/runtime/host_tensor_view.hpp"
 #include "ngraph/runtime/interpreter/exec_node.hpp"
 
@@ -29,16 +29,21 @@ namespace ngraph
     {
         namespace interpreter
         {
-            class AsinExec;
+            class MaxPoolExec;
         }
     }
 }
 
-class ngraph::runtime::interpreter::AsinExec : public ExecNode
+class ngraph::runtime::interpreter::MaxPoolExec : public ExecNode
 {
 public:
-    AsinExec(const ngraph::Node* node)
-        : m_node{dynamic_cast<const ngraph::op::Asin*>(node)}
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return MaxPoolExec(node);
+    }
+
+    MaxPoolExec(const ngraph::Node* node)
+        : m_node{dynamic_cast<const ngraph::op::MaxPool*>(node)}
     {
         (void)m_node; // Silence compiler warning
     }
@@ -50,5 +55,5 @@ public:
     }
 
 private:
-    const ngraph::op::Asin* m_node;
+    const ngraph::op::MaxPool* m_node;
 };

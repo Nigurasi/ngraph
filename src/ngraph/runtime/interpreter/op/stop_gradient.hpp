@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::StopGradientExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return StopGradientExec(node);
+    }
+
     StopGradientExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::StopGradient*>(node)}
     {

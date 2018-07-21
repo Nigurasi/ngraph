@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::ConvolutionExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return ConvolutionExec(node);
+    }
+
     ConvolutionExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Convolution*>(node)}
     {

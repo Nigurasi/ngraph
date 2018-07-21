@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::ConcatExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return ConcatExec(node);
+    }
+
     ConcatExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Concat*>(node)}
     {

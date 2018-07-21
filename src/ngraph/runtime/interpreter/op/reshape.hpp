@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::ReshapeExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return ReshapeExec(node);
+    }
+
     ReshapeExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Reshape*>(node)}
     {

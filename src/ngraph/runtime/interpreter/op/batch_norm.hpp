@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::BatchNormExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return BatchNormExec(node);
+    }
+
     BatchNormExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::BatchNorm*>(node)}
     {

@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::OrExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return OrExec(node);
+    }
+
     OrExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Or*>(node)}
     {

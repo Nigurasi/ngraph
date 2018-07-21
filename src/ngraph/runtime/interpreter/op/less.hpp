@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::LessExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return LessExec(node);
+    }
+
     LessExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Less*>(node)}
     {

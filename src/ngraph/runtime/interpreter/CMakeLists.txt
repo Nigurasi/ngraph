@@ -23,7 +23,7 @@ if(NGRAPH_DISTRIBUTED_ENABLE)
 endif()
 
 if (NGRAPH_INTERPRETER_ENABLE)
-    add_library(interpreter_backend SHARED int_backend.cpp)
+    add_library(interpreter_backend SHARED int_backend.cpp exec_node.cpp)
     set_target_properties(interpreter_backend PROPERTIES VERSION ${NGRAPH_VERSION} SOVERSION ${NGRAPH_API_VERSION})
     target_link_libraries(interpreter_backend PUBLIC ngraph)
     set_target_properties(interpreter_backend PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${NGRAPH_BUILD_DIR})

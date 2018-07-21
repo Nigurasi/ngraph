@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::SigmoidExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return SigmoidExec(node);
+    }
+
     SigmoidExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Sigmoid*>(node)}
     {

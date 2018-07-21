@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::MaximumExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return MaximumExec(node);
+    }
+
     MaximumExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Maximum*>(node)}
     {

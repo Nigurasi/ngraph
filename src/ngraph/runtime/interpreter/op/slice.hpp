@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::SliceExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return SliceExec(node);
+    }
+
     SliceExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Slice*>(node)}
     {

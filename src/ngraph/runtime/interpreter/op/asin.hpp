@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::AsinExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return AsinExec(node);
+    }
+
     AsinExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Asin*>(node)}
     {

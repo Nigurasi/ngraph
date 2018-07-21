@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::PadExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return PadExec(node);
+    }
+
     PadExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Pad*>(node)}
     {

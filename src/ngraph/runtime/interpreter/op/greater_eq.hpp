@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::GreaterEqExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return GreaterEqExec(node);
+    }
+
     GreaterEqExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::GreaterEq*>(node)}
     {

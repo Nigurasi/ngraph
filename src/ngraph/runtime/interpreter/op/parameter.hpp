@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::ParameterExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return ParameterExec(node);
+    }
+
     ParameterExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Parameter*>(node)}
     {

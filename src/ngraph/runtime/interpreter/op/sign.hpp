@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::SignExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return SignExec(node);
+    }
+
     SignExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Sign*>(node)}
     {

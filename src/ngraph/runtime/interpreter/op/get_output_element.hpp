@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::GetOutputElementExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return GetOutputElementExec(node);
+    }
+
     GetOutputElementExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::GetOutputElement*>(node)}
     {

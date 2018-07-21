@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::PowerExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return PowerExec(node);
+    }
+
     PowerExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Power*>(node)}
     {

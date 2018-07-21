@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::ProductExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return ProductExec(node);
+    }
+
     ProductExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Product*>(node)}
     {

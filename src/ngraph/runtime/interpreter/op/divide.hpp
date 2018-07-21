@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::DivideExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return DivideExec(node);
+    }
+
     DivideExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Divide*>(node)}
     {

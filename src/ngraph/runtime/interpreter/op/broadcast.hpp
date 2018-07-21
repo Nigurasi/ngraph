@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::BroadcastExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return BroadcastExec(node);
+    }
+
     BroadcastExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Broadcast*>(node)}
     {

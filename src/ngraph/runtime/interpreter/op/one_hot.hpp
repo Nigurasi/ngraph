@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::OneHotExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return OneHotExec(node);
+    }
+
     OneHotExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::OneHot*>(node)}
     {

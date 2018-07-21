@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::TanExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return TanExec(node);
+    }
+
     TanExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Tan*>(node)}
     {

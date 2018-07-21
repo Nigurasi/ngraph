@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::NotEqualExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return NotEqualExec(node);
+    }
+
     NotEqualExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::NotEqual*>(node)}
     {

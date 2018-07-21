@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::ReverseExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return ReverseExec(node);
+    }
+
     ReverseExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Reverse*>(node)}
     {

@@ -37,6 +37,11 @@ namespace ngraph
 class ngraph::runtime::interpreter::ReluExec : public ExecNode
 {
 public:
+    static ExecNode create(const ngraph::Node* node)
+    {
+        return ReluExec(node);
+    }
+
     ReluExec(const ngraph::Node* node)
         : m_node{dynamic_cast<const ngraph::op::Relu*>(node)}
     {
