@@ -28,6 +28,8 @@ namespace ngraph
             /// \brief Abstract base class for ops on tensors views.
             class RequiresTensorViewArgs : public ngraph::op::Op
             {
+                void validate() const override;
+
             protected:
                 /// \brief Constructs an operation on tensor view arguments.
                 ///

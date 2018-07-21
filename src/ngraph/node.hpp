@@ -83,7 +83,8 @@ namespace ngraph
 
         virtual void generate_adjoints(autodiff::Adjoints& adjoints, const NodeVector& deltas) {}
     public:
-        virtual bool validate() { return true; }
+        /// Throws if the node is invalid.
+        virtual void validate() const {}
         /// The class name, must not contain spaces
         std::string description() const { return m_node_type; }
         const std::string& get_friendly_name() const;
@@ -192,6 +193,9 @@ namespace ngraph
         NodeVector get_users() const;
 
         virtual std::shared_ptr<Node> get_default_value() const { return nullptr; }
+        /// Throws if any inputs return more than one output
+        void requires_single_output_args() const;
+
     protected:
         void add_output(const element::Type& element_type, const Shape& shape);
 
