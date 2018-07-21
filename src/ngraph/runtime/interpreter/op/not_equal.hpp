@@ -18,6 +18,7 @@
 
 #include <memory>
 #include <vector>
+#include <iostream>
 
 #include "ngraph/op/not_equal.hpp"
 #include "ngraph/runtime/host_tensor_view.hpp"
@@ -39,6 +40,7 @@ class ngraph::runtime::interpreter::NotEqualExec : public ExecNode
 public:
     static ExecNode create(const ngraph::Node* node)
     {
+        std::cout << "create NotEqual" << std::endl;
         return NotEqualExec(node);
     }
 
@@ -46,12 +48,15 @@ public:
         : m_node{dynamic_cast<const ngraph::op::NotEqual*>(node)}
     {
         (void)m_node; // Silence compiler warning
+
+        std::cout << "NotEqual ctor" << std::endl;
     }
 
     template <typename T>
     void execute(const std::vector<std::shared_ptr<HostTensorView>>& out,
                  const std::vector<std::shared_ptr<HostTensorView>>& args)
     {
+        std::cout << "execute NotEqual" << std::endl;
     }
 
 private:

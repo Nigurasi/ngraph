@@ -18,6 +18,7 @@
 
 #include <memory>
 #include <vector>
+#include <iostream>
 
 #include "ngraph/op/result.hpp"
 #include "ngraph/runtime/host_tensor_view.hpp"
@@ -39,6 +40,7 @@ class ngraph::runtime::interpreter::ResultExec : public ExecNode
 public:
     static ExecNode create(const ngraph::Node* node)
     {
+        std::cout << "create Result" << std::endl;
         return ResultExec(node);
     }
 
@@ -46,12 +48,15 @@ public:
         : m_node{dynamic_cast<const ngraph::op::Result*>(node)}
     {
         (void)m_node; // Silence compiler warning
+
+        std::cout << "Result ctor" << std::endl;
     }
 
     template <typename T>
     void execute(const std::vector<std::shared_ptr<HostTensorView>>& out,
                  const std::vector<std::shared_ptr<HostTensorView>>& args)
     {
+        std::cout << "execute Result" << std::endl;
     }
 
 private:
