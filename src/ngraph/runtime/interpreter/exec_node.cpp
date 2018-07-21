@@ -86,7 +86,7 @@
 using namespace std;
 using namespace ngraph;
 
-#define TID(a) type_index(typeid(op::Abs))
+#define TID(a) type_index(typeid(a))
 
 unordered_map<type_index, ngraph::runtime::interpreter::ExecNode::create_t>
     runtime::interpreter::ExecNode::s_list = {
