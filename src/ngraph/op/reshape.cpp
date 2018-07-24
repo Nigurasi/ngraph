@@ -29,6 +29,12 @@ op::Reshape::Reshape(const shared_ptr<Node>& arg,
     , m_input_order(input_order)
     , m_output_shape(output_shape)
 {
+}
+
+void op::Reshape::validate_and_infer_types()
+{
+    util::RequiresTensorViewArgs::validate_and_infer_types();
+
     auto& input = get_inputs().at(0);
     auto input_shape = input.get_shape();
     auto input_rank = input_shape.size();

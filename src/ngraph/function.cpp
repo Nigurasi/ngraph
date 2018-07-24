@@ -74,7 +74,8 @@ Function::Function(const std::shared_ptr<Node>& result,
 
 void Function::init()
 {
-    validate_nodes(m_results);
+    validate_nodes_and_infer_types(get_ops());
+
     traverse_nodes(this, [&](shared_ptr<Node> node) {
         std::shared_ptr<op::Parameter> p = std::dynamic_pointer_cast<op::Parameter>(node);
         if (nullptr != p)

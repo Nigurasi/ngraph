@@ -52,7 +52,7 @@ namespace ngraph
     void replace_node(std::shared_ptr<Node> target, std::shared_ptr<Node> replacement);
 
     template <typename T>
-    std::list<std::shared_ptr<Node>> topological_sort(T nodes)
+    std::list<std::shared_ptr<Node>> topological_sort(const T& nodes)
     {
         std::deque<ngraph::Node*> independent_nodes;
         std::unordered_map<const ngraph::Node*, size_t> node_dependency_count;
@@ -91,11 +91,11 @@ namespace ngraph
     }
 
     template <typename T>
-    void validate_nodes(T nodes)
+    void validate_nodes_and_infer_types(const T& nodes)
     {
         for (auto node : topological_sort(nodes))
         {
-            node->validate();
+            node->validate_and_infer_types();
         }
     }
 

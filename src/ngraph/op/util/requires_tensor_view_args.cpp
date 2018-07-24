@@ -31,7 +31,7 @@ op::util::RequiresTensorViewArgs::RequiresTensorViewArgs(const std::string& node
 {
 }
 
-void op::util::RequiresTensorViewArgs::validate() const
+void op::util::RequiresTensorViewArgs::validate_and_infer_types()
 {
     requires_single_output_args();
 }

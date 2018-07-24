@@ -28,13 +28,13 @@ namespace ngraph
             /// \brief Abstract base class for ops on tensors views.
             class RequiresTensorViewArgs : public ngraph::op::Op
             {
-                void validate() const override;
-
             protected:
                 /// \brief Constructs an operation on tensor view arguments.
                 ///
                 /// \param args The nodes producing this node's input tensors.
                 RequiresTensorViewArgs(const std::string& node_type, const NodeVector& args);
+
+                void validate_and_infer_types() override;
             };
         }
     }

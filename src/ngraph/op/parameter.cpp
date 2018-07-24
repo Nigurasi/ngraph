@@ -26,8 +26,15 @@ op::Parameter::Parameter(const element::Type& element_type,
                          const bool cacheable)
     : Op("Parameter", {})
     , m_cacheable(cacheable)
+    , m_shape(shape)
+    , m_element_type(element_type)
 {
-    add_output(element_type, shape);
+}
+
+void op::Parameter::validate_and_infer_types()
+{
+    Op::validate_and_infer_types();
+    set_output_type(0, m_element_type, m_shape);
 }
 
 shared_ptr<Node> op::Parameter::copy_with_new_args(const NodeVector& new_args) const
