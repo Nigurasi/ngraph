@@ -14,14 +14,15 @@
 * limitations under the License.
 *******************************************************************************/
 
-#include "ngraph/node.hpp"
 #include <memory>
+#include <sstream>
 #include <typeindex>
 #include <typeinfo>
 
 #include "ngraph/autodiff/adjoints.hpp"
 #include "ngraph/descriptor/layout/tensor_view_layout.hpp"
 #include "ngraph/descriptor/primary_tensor_view.hpp"
+#include "ngraph/node.hpp"
 #include "ngraph/op/parameter.hpp"
 #include "ngraph/op/result.hpp"
 #include "ngraph/placement.hpp"
@@ -233,7 +234,10 @@ const Shape& Node::get_shape() const
 {
     if (get_output_size() != 1)
     {
-        throw ngraph_error("get_shape() must be called on a node with exactly one output.");
+        stringstream es;
+        es << "get_shape() must be called on a node with exactly one output (" << description()
+           << ")";
+        throw ngraph_error(es);
     }
     return get_output_shape(0);
 }

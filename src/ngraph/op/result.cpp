@@ -14,9 +14,7 @@
 * limitations under the License.
 *******************************************************************************/
 
-#include <iostream>
 #include <memory>
-#include <string>
 #include <typeindex>
 #include <typeinfo>
 
@@ -29,17 +27,15 @@ using namespace ngraph;
 op::Result::Result(const shared_ptr<Node>& arg)
     : RequiresTensorViewArgs("Result", {arg})
 {
-    cerr << "Result: " << get_input_size() << " " << get_argument(0)->description() << endl;
 }
 
 void op::Result::validate_and_infer_types()
 {
+   util::RequiresTensorViewArgs::validate_and_infer_types(); 
+
     if (get_input_size() != 1)
     {
-        string e("Result expected a single-output argument");
-        //Çe += "size: " + get_input_size();
-        e += "node: " + get_argument(0)->description();
-        throw ngraph_error(e);
+        throw ngraph_error("Result expected a single-output argument");
     }
 
     //always borrow the placement conf even the default one
