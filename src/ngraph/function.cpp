@@ -70,6 +70,7 @@ Function::Function(const std::shared_ptr<Node>& result,
                    const std::string& name)
     : Function(NodeVector{result}, parameters, name)
 {
+    validate_nodes_and_infer_types(get_ops());
 }
 
 void Function::init()

@@ -32,7 +32,5 @@ op::util::UnaryElementwise::UnaryElementwise(const std::string& node_type,
 void op::util::UnaryElementwise::validate_and_infer_types()
 {
     RequiresTensorViewArgs::validate_and_infer_types();
-    auto& input = get_inputs().at(0);
-
-    set_value_type_checked(m_result_element_type, input.get_shape());
+    set_value_type_checked(m_result_element_type, get_input_shape(0));
 }
