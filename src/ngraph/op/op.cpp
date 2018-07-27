@@ -29,5 +29,5 @@ op::Op::Op(const std::string& node_type, const NodeVector& args)
     : Node(node_type, args)
 {
     // Will replace with real type
-    set_output_type(0, element::f32, Shape());
+    set_output_type(0, element::Type{}, Shape());
 }

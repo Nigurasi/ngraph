@@ -17,6 +17,7 @@
 #pragma once
 
 #include <cstdio>
+#include <iostream>
 #include <vector>
 
 #include "ngraph/axis_set.hpp"
@@ -104,5 +105,18 @@ namespace ngraph
     inline bool is_vector(const SHAPE_TYPE& shape)
     {
         return 1 == shape.size();
+    }
+
+    inline std::ostream& operator<<(std::ostream& out, const ngraph::Shape& obj)
+    {
+        out << "Shape{";
+        const char* sep{""};
+        for (auto i : obj)
+        {
+            out << sep << i;
+            sep = ", ";
+        }
+        out << "}";
+        return out;
     }
 }

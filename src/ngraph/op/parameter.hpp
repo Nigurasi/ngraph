@@ -54,7 +54,7 @@ namespace ngraph
         protected:
             bool m_cacheable;
             Shape m_shape;
-            const element::Type& m_element_type;
+            element::Type m_element_type;
         };
     }
 }
